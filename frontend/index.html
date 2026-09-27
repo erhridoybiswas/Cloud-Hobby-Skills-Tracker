@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hobby &amp; Skills Tracker — Sign In</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <div class="auth-wrap">
+    <div class="auth-card card">
+      <div style="text-align:center;margin-bottom:22px">
+        <div style="font-size:2.2rem">🎯</div>
+        <h1 style="font-size:1.35rem;margin-top:6px">Hobby &amp; Skills Tracker</h1>
+        <p style="color:var(--text-muted);font-size:.88rem;margin-top:4px">
+          Track your progress. Share your wins. Access from anywhere.
+        </p>
+      </div>
+
+      <div id="alertBox"></div>
+
+      <div class="auth-tabs">
+        <button id="tabLogin" class="active">Log In</button>
+        <button id="tabRegister">Sign Up</button>
+      </div>
+
+      <!-- LOGIN -->
+      <form id="loginForm">
+        <div class="form-group">
+          <label for="loginIdentifier">Email or Username</label>
+          <input id="loginIdentifier" type="text" autocomplete="username"
+                 placeholder="you@example.com" required />
+        </div>
+        <div class="form-group">
+          <label for="loginPassword">Password</label>
+          <input id="loginPassword" type="password" autocomplete="current-password"
+                 placeholder="••••••••" required />
+        </div>
+        <button type="submit" class="btn btn-primary btn-block" id="loginBtn">Log In</button>
+      </form>
+
+      <!-- REGISTER -->
+      <form id="registerForm" class="hidden">
+        <div class="form-group">
+          <label for="regName">Full Name</label>
+          <input id="regName" type="text" placeholder="Ada Lovelace" required />
+        </div>
+        <div class="form-group">
+          <label for="regUsername">Username</label>
+          <input id="regUsername" type="text" placeholder="ada_l"
+                 pattern="[a-zA-Z0-9_]{3,20}" required />
+          <small style="color:var(--text-muted);font-size:.76rem">
+            3–20 characters: letters, numbers, underscore.
+          </small>
+        </div>
+        <div class="form-group">
+          <label for="regEmail">Email</label>
+          <input id="regEmail" type="email" placeholder="you@example.com" required />
+        </div>
+        <div class="form-group">
+          <label for="regPassword">Password</label>
+          <input id="regPassword" type="password" placeholder="Min 8 chars, 1 letter + 1 digit" required />
+        </div>
+        <button type="submit" class="btn btn-primary btn-block" id="registerBtn">Create Account</button>
+      </form>
+
+      <p style="text-align:center;color:var(--text-muted);font-size:.78rem;margin-top:18px">
+        Cloud Computing Project · Free-tier &amp; local friendly
+      </p>
+    </div>
+  </div>
+
+  <script src="/js/api.js"></script>
+  <script src="/js/auth.js"></script>
+</body>
+</html>

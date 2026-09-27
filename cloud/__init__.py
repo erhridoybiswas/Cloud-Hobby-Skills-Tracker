@@ -1,0 +1,1 @@
+"""Cloud abstraction package: database, object storage, and authentication."""

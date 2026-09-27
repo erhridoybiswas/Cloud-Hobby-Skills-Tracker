@@ -1,0 +1,37 @@
+# Local container stack.
+#   docker compose up --build
+# Then open http://localhost:8080
+version: "3.9"
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    ports:
+      - "8080:8080"
+    environment:
+      - SECRET_KEY=${SECRET_KEY:-local-compose-secret-change-me}
+      - JWT_EXPIRES_MINUTES=1440
+      - DATABASE_PATH=/app/backend/data/app.db
+      - STORAGE_BACKEND=local
+      - UPLOAD_FOLDER=/app/backend/uploads
+      - MAX_CONTENT_LENGTH_MB=5
+      - PORT=8080
+    volumes:
+      - app_data:/app/backend/data
+      - app_uploads:/app/backend/uploads
+    restart: unless-stopped
+
+  # Optional: demonstrates the caching layer of the advanced architecture.
+  # Enable with `docker compose --profile cache up`.
+  redis:
+    image: redis:7-alpine
+    profiles: ["cache"]
+    ports:
+      - "6379:6379"
+    restart: unless-stopped
+
+volumes:
+  app_data:
+  app_uploads:

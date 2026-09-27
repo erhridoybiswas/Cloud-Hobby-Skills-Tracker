@@ -1,0 +1,2 @@
+# This file exists only so that the empty data/ directory is tracked by git.
+# The SQLite database file inside is ignored by .gitignore.

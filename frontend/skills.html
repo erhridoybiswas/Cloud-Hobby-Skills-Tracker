@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Skills — Hobby &amp; Skills Tracker</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <main class="container page">
+    <div class="flex-between mb-2">
+      <h1 style="font-size:1.5rem">My Hobbies &amp; Skills</h1>
+      <button class="btn btn-primary" id="openAddSkill">+ Add Skill</button>
+    </div>
+
+    <div id="alertBox"></div>
+    <div id="skillList" class="grid grid-2">
+      <div class="empty"><div class="empty-icon">⏳</div><p>Loading your skills…</p></div>
+    </div>
+  </main>
+
+  <!-- ============ ADD SKILL MODAL ============ -->
+  <div class="modal-backdrop hidden" id="skillModal">
+    <div class="modal">
+      <h2 class="mb-2">Add a New Skill</h2>
+      <form id="skillForm">
+        <div class="form-group">
+          <label>Skill / Hobby Name</label>
+          <input id="skillName" placeholder="e.g. Photography" required />
+        </div>
+        <div class="form-group">
+          <label>Category</label>
+          <select id="skillCategory">
+            <option>Photography</option><option>Music</option><option>Art</option>
+            <option>Coding</option><option>Fitness</option><option>Cooking</option>
+            <option>Writing</option><option>Design</option><option>Games</option>
+            <option>Outdoors</option><option selected>Other</option>
+          </select>
+        </div>
+        <div class="grid grid-2">
+          <div class="form-group">
+            <label>Current Level</label>
+            <select id="skillCurrentLevel">
+              <option>BEGINNER</option><option>INTERMEDIATE</option><option>ADVANCED</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Target Level</label>
+            <select id="skillTargetLevel">
+              <option>BEGINNER</option><option selected>INTERMEDIATE</option><option>ADVANCED</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Description</label>
+          <textarea id="skillDescription" placeholder="Why do you want to learn this?"></textarea>
+        </div>
+        <div class="flex" style="justify-content:flex-end">
+          <button type="button" class="btn btn-secondary" id="cancelSkill">Cancel</button>
+          <button type="submit" class="btn btn-primary">Create Skill</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ============ ADD GOAL MODAL ============ -->
+  <div class="modal-backdrop hidden" id="goalModal">
+    <div class="modal">
+      <h2 class="mb-2">Set a Goal</h2>
+      <p style="color:var(--text-muted);font-size:.85rem;margin-bottom:14px" id="goalSkillName"></p>
+      <form id="goalForm">
+        <input type="hidden" id="goalSkillId" />
+        <div class="form-group">
+          <label>Goal Title</label>
+          <input id="goalTitle" placeholder="Practice 30 hours" required />
+        </div>
+        <div class="grid grid-2">
+          <div class="form-group">
+            <label>Target Value</label>
+            <input id="goalTarget" type="number" min="1" step="0.5" value="30" required />
+          </div>
+          <div class="form-group">
+            <label>Unit</label>
+            <select id="goalUnit">
+              <option value="hours" selected>hours</option>
+              <option value="minutes">minutes</option>
+              <option value="sessions">sessions</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Deadline (optional)</label>
+          <input id="goalDeadline" type="date" />
+        </div>
+        <div class="form-group">
+          <label>Milestones (comma-separated values)</label>
+          <input id="goalMilestones" placeholder="5, 10, 20, 30" value="5,10,20,30" />
+        </div>
+        <div class="flex" style="justify-content:flex-end">
+          <button type="button" class="btn btn-secondary" id="cancelGoal">Cancel</button>
+          <button type="submit" class="btn btn-primary">Create Goal</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ============ LOG PRACTICE MODAL ============ -->
+  <div class="modal-backdrop hidden" id="practiceModal">
+    <div class="modal">
+      <h2 class="mb-2">Log a Practice Session</h2>
+      <p style="color:var(--text-muted);font-size:.85rem;margin-bottom:14px" id="practiceSkillName"></p>
+      <form id="practiceForm">
+        <input type="hidden" id="practiceSkillId" />
+        <div class="grid grid-2">
+          <div class="form-group">
+            <label>Duration (minutes)</label>
+            <input id="practiceDuration" type="number" min="1" max="1440" value="60" required />
+          </div>
+          <div class="form-group">
+            <label>Date</label>
+            <input id="practiceDate" type="date" required />
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Activity</label>
+          <input id="practiceActivity" placeholder="Practiced portrait photography" />
+        </div>
+        <div class="form-group">
+          <label>Notes</label>
+          <textarea id="practiceNotes" placeholder="Worked on natural-light composition."></textarea>
+        </div>
+        <div class="flex" style="justify-content:flex-end">
+          <button type="button" class="btn btn-secondary" id="cancelPractice">Cancel</button>
+          <button type="submit" class="btn btn-primary">Log Session</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="/js/api.js"></script>
+  <script src="/js/nav.js"></script>
+  <script src="/js/skills.js"></script>
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard — Hobby &amp; Skills Tracker</title>
+  <link rel="stylesheet" href="/css/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+</head>
+<body>
+  <main class="container page">
+    <div class="flex-between mb-2">
+      <div>
+        <h1 style="font-size:1.5rem">Welcome back, <span id="userName">…</span> 👋</h1>
+        <p style="color:var(--text-muted);font-size:.9rem" id="streakLine">Loading your progress…</p>
+      </div>
+      <a href="/skills.html" class="btn btn-primary">+ Log Practice</a>
+    </div>
+
+    <div id="alertBox"></div>
+
+    <!-- KPI ROW -->
+    <div class="grid grid-4 mb-2">
+      <div class="card stat-card">
+        <div class="stat-value" id="kpiTotalHours">–</div>
+        <div class="stat-label">Total Practice</div>
+      </div>
+      <div class="card stat-card">
+        <div class="stat-value" id="kpiWeekly">–</div>
+        <div class="stat-label">This Week</div>
+      </div>
+      <div class="card stat-card">
+        <div class="stat-value" id="kpiStreak">–</div>
+        <div class="stat-label">Current Streak</div>
+      </div>
+      <div class="card stat-card">
+        <div class="stat-value" id="kpiGoals">–</div>
+        <div class="stat-label">Goals Completed</div>
+      </div>
+    </div>
+
+    <div class="grid grid-4 mb-3">
+      <div class="card stat-card">
+        <div class="stat-value" id="kpiActiveSkills">–</div>
+        <div class="stat-label">Active Skills</div>
+      </div>
+      <div class="card stat-card">
+        <div class="stat-value" id="kpiMilestones">–</div>
+        <div class="stat-label">Milestones</div>
+      </div>
+      <div class="card stat-card">
+        <div class="stat-value" id="kpiPosts">–</div>
+        <div class="stat-label">Posts Shared</div>
+      </div>
+      <div class="card stat-card">
+        <div class="stat-value" id="kpiLikes">–</div>
+        <div class="stat-label">Likes Received</div>
+      </div>
+    </div>
+
+    <!-- CHARTS -->
+    <div class="grid grid-2 mb-3">
+      <div class="card">
+        <h2>📊 Practice Hours by Skill</h2>
+        <div class="chart-box"><canvas id="chartBySkill"></canvas></div>
+      </div>
+      <div class="card">
+        <h2>📈 Weekly Practice Trend</h2>
+        <div class="chart-box"><canvas id="chartWeekly"></canvas></div>
+      </div>
+      <div class="card">
+        <h2>📅 Monthly Progress</h2>
+        <div class="chart-box"><canvas id="chartMonthly"></canvas></div>
+      </div>
+      <div class="card">
+        <h2>🎯 Goal Completion</h2>
+        <div class="chart-box"><canvas id="chartGoals"></canvas></div>
+      </div>
+      <div class="card">
+        <h2>🧩 Skill Distribution</h2>
+        <div class="chart-box-sm"><canvas id="chartDistribution"></canvas></div>
+      </div>
+      <div class="card">
+        <h2>🏅 Recent Achievements</h2>
+        <div id="achievementsList">
+          <div class="empty"><div class="empty-icon">🏅</div><p>No milestones achieved yet.</p></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RECENT ACTIVITY -->
+    <div class="card">
+      <h2>🕒 Recent Activity</h2>
+      <div id="activityList">
+        <div class="empty"><div class="empty-icon">📝</div><p>No practice sessions logged yet.</p></div>
+      </div>
+    </div>
+  </main>
+
+  <script src="/js/api.js"></script>
+  <script src="/js/nav.js"></script>
+  <script src="/js/dashboard.js"></script>
+</body>
+</html>

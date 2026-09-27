@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Community — Hobby &amp; Skills Tracker</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <main class="container page">
+    <h1 style="font-size:1.5rem" class="mb-2">🌍 Community Feed</h1>
+    <div id="alertBox"></div>
+
+    <!-- COMPOSER -->
+    <div class="card mb-3">
+      <h2>Share an Achievement</h2>
+      <form id="postForm">
+        <div class="form-group">
+          <textarea id="postContent" maxlength="2000"
+            placeholder="Completed 30 hours of guitar practice! 🎸"></textarea>
+        </div>
+        <div class="grid grid-3">
+          <div class="form-group">
+            <label>Tag a Skill</label>
+            <select id="postSkill"><option value="">— none —</option></select>
+          </div>
+          <div class="form-group">
+            <label>Attach Proof Image</label>
+            <input type="file" id="postImage" accept="image/*" />
+          </div>
+          <div class="form-group" style="display:flex;align-items:flex-end">
+            <button type="submit" class="btn btn-primary btn-block">Post to Community</button>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <!-- FILTERS -->
+    <div class="card mb-3">
+      <div class="grid grid-3">
+        <div class="form-group" style="margin:0">
+          <label>Search</label>
+          <input id="filterSearch" placeholder="Search posts or skills…" />
+        </div>
+        <div class="form-group" style="margin:0">
+          <label>Category</label>
+          <select id="filterCategory">
+            <option value="">All Categories</option>
+            <option>Photography</option><option>Music</option><option>Art</option>
+            <option>Coding</option><option>Fitness</option><option>Cooking</option>
+            <option>Writing</option><option>Design</option><option>Other</option>
+          </select>
+        </div>
+        <div class="form-group" style="margin:0">
+          <label>Sort By</label>
+          <select id="filterSort">
+            <option value="recent">Most Recent</option>
+            <option value="liked">Most Liked</option>
+          </select>
+        </div>
+      </div>
+      <div class="flex mt-2">
+        <button class="btn btn-secondary btn-sm" id="filterAll">All Posts</button>
+        <button class="btn btn-secondary btn-sm" id="filterFollowing">Following</button>
+      </div>
+    </div>
+
+    <div id="feed">
+      <div class="empty"><div class="empty-icon">⏳</div><p>Loading community posts…</p></div>
+    </div>
+
+    <div class="flex" style="justify-content:center;margin-top:20px">
+      <button class="btn btn-secondary" id="loadMore">Load More</button>
+    </div>
+  </main>
+
+  <script src="/js/api.js"></script>
+  <script src="/js/nav.js"></script>
+  <script src="/js/community.js"></script>
+</body>
+</html>
